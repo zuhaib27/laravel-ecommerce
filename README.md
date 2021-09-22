@@ -1,2 +1,2 @@
 # laravel-ecommerce
-e-commerce demo to be showcased, and deployed on AWS.
+E-commerce demo to be showcased, and deployed on AWS.
