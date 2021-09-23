@@ -31,8 +31,8 @@ class UserFactory extends Factory
             'remember_token' => Str::random(10),
             'address' => $this->faker->address(),
             'city' => $this->faker->city(),
-            'state' => $this->faker->state(),
-            'zip_code' => $this->faker-> postcode()
+            'province' => $this->faker->state(), //need to fix for CANADA province()
+            'postal_code' => $this->faker-> postcode()  //need to fix for CANADA postalcode()
         ];
     }
 

@@ -335,8 +335,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         email: '',
         address: '',
         city: '',
-        state: '',
-        zip_code: ''
+        province: '',
+        postal_code: ''
       },
       paymentProcessing: false
     };
@@ -404,8 +404,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     address: {
                       line1: _this2.customer.address,
                       city: _this2.customer.city,
-                      state: _this2.customer.state,
-                      postal_code: _this2.customer.zip_code
+                      province: _this2.customer.province,
+                      postal_code: _this2.customer.postal_code
                     }
                   }
                 });
@@ -1615,9 +1615,9 @@ var render = function() {
               "label",
               {
                 staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "state" }
+                attrs: { for: "province" }
               },
-              [_vm._v("State")]
+              [_vm._v("Province")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -1625,25 +1625,25 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.customer.state,
-                  expression: "customer.state"
+                  value: _vm.customer.province,
+                  expression: "customer.province"
                 }
               ],
               staticClass:
                 "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
               attrs: {
                 type: "email",
-                id: "state",
-                name: "state",
+                id: "province",
+                name: "province",
                 disabled: _vm.paymentProcessing
               },
-              domProps: { value: _vm.customer.state },
+              domProps: { value: _vm.customer.province },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.customer, "state", $event.target.value)
+                  _vm.$set(_vm.customer, "province", $event.target.value)
                 }
               }
             })
@@ -1656,9 +1656,9 @@ var render = function() {
               "label",
               {
                 staticClass: "leading-7 text-sm text-gray-600",
-                attrs: { for: "zip_code" }
+                attrs: { for: "postal_code" }
               },
-              [_vm._v("Zip Code")]
+              [_vm._v("Postal Code")]
             ),
             _vm._v(" "),
             _c("input", {
@@ -1666,25 +1666,25 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model",
-                  value: _vm.customer.zip_code,
-                  expression: "customer.zip_code"
+                  value: _vm.customer.postal_code,
+                  expression: "customer.postal_code"
                 }
               ],
               staticClass:
                 "w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out",
               attrs: {
                 type: "email",
-                id: "zip_code",
-                name: "zip_code",
+                id: "postal_code",
+                name: "postal_code",
                 disabled: _vm.paymentProcessing
               },
-              domProps: { value: _vm.customer.zip_code },
+              domProps: { value: _vm.customer.postal_code },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.customer, "zip_code", $event.target.value)
+                  _vm.$set(_vm.customer, "postal_code", $event.target.value)
                 }
               }
             })

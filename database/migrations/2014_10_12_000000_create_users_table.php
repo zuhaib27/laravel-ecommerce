@@ -20,8 +20,8 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->string('address');
             $table->string('city');
-            $table->string('state');
-            $table->string('zip_code');
+            $table->string('province');
+            $table->string('postal_code');
             $table->rememberToken();
             $table->timestamps();
         });

@@ -102,26 +102,26 @@
                 </div>
                 <div class="p-2 w-1/6">
                     <div class="relative">
-                        <label for="state" class="leading-7 text-sm text-gray-600">State</label>
+                        <label for="province" class="leading-7 text-sm text-gray-600">Province</label>
                         <input
                             type="email"
-                            id="state"
-                            name="state"
+                            id="province"
+                            name="province"
                             class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                            v-model="customer.state"
+                            v-model="customer.province"
                             :disabled="paymentProcessing"
                         >
                     </div>
                 </div>
                 <div class="p-2 w-1/6">
                     <div class="relative">
-                        <label for="zip_code" class="leading-7 text-sm text-gray-600">Zip Code</label>
+                        <label for="postal_code" class="leading-7 text-sm text-gray-600">Postal Code</label>
                         <input
                             type="email"
-                            id="zip_code"
-                            name="zip_code"
+                            id="postal_code"
+                            name="postal_code"
                             class="w-full bg-gray-100 rounded border border-gray-300 focus:border-indigo-500 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                            v-model="customer.zip_code"
+                            v-model="customer.postal_code"
                             :disabled="paymentProcessing"
                         >
                     </div>
@@ -159,8 +159,8 @@
                     email: '',
                     address: '',
                     city: '',
-                    state: '',
-                    zip_code: ''
+                    province: '',
+                    postal_code: ''
                 },
                 paymentProcessing: false
             }
@@ -196,8 +196,8 @@
                             address: {
                                 line1: this.customer.address,
                                 city: this.customer.city,
-                                state: this.customer.state,
-                                postal_code: this.customer.zip_code
+                                province: this.customer.province,
+                                postal_code: this.customer.postal_code
                             }
                         }
                     }

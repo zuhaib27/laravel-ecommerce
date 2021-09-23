@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Stripe Shopping Cart</title>
+        <title>XYZ Shopping Cart</title>
 
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
         <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -16,10 +16,12 @@
                     <header class="text-gray-700 body-font">
                         <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
                             <a class="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full" viewBox="0 0 24 24">
-                                    <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
-                                </svg>
-                                <span class="ml-3 text-xl">Shopping Cart</span>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="48px" height="48px" viewBox="0 0 48 48" fill="none">
+                                <rect width="48" height="48" fill="white" fill-opacity="0.01"/>
+                                <rect x="8" y="14" width="32" height="30" rx="2" fill="#2F88FF" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                                <path d="M17 18V11C17 7.13401 20.134 4 24 4C27.866 4 31 7.13401 31 11V18" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                                <span class="ml-3 text-xl">XYZ Shopping Cart</span>
                             </a>
                             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
                                 <router-link

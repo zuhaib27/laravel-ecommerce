@@ -22,8 +22,8 @@ class UserController extends Controller
                 'name' => $request->input('first_name') . ' ' . $request->input('last_name'),
                 'address' => $request->input('address'),
                 'city' => $request->input('city'),
-                'state' => $request->input('state'),
-                'zip_code' => $request->input('zip_code')
+                'province' => $request->input('province'),
+                'postal_code' => $request->input('postal_code')
             ]
         );
 
