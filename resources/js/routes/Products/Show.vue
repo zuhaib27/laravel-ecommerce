@@ -37,7 +37,7 @@
         methods: {
             formatCurrency(amount) {
                 amount = (amount / 100);
-                return amount.toLocaleString('en-US', { style: 'currency', currency: 'USD' });
+                return amount.toLocaleString('en-CA', { style: 'currency', currency: 'CAD' });
             }
         },
         computed: {
