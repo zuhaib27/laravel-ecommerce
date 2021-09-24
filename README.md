@@ -8,10 +8,30 @@
 </p>
 
 ## Project Guidelines
+XYZ is an online e-commerce store. Users on the platform are able to shop for items, put the items in their cart and pay for the items. Multiple payment methods are supported.
 
+Task:
+Build several API endpoints to handle the Order Management module for XYZ online store. You can choose the endpoints you want to build. We would like to see several read and write endpoints
+
+Strong points for:
+Your problem solving skills
+Your knowledge of Laravel core features and functionalities
+Your knowledge of software design patterns
+Knowledge of git/github workflow
+
+Bonus points for:
+Deploy to AWS or Heroku
+CI pipeline with github actions or travis
+
+Method of Delivery:
+Create a public repository for this exercise and share the link with us when it's ready. You have 1 week to complete this exercise. Unit tests are required.
 
 ## Project Setup
-
+- cd /laravel-ecommerce
+- composer install
+- php artisan migrate:refresh --seed
+- php artisan serve
+- NOTE: will need to adjust .env to support local database and ports!
 
 ## About Laravel
 
