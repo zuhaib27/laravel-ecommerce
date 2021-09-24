@@ -24,6 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('postal_code')->default('unknown');
             $table->rememberToken();
             $table->timestamps();
+            $table->boolean('is_admin')->default(0);
         });
     }
 

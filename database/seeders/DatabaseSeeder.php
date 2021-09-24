@@ -15,6 +15,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        $this->call(UserSeeder::class);             //generate admin user
         Product::factory()->count(20)->create();    //generate 20 products
         Category::factory()->count(5)->create();    //generate 5 categories
 

@@ -18,6 +18,16 @@ module.exports = [
         path: '/summary',
         name: 'order.summary',
         component: () => import('./routes/Order/Summary.vue')
+    },
+    {
+        path: '/add-product',
+        name: 'products.add',
+        component: () => import('./routes/Products/AddProd.vue')
+    },
+    {
+        path: '/delete-product',
+        name: 'products.delete',
+        component: () => import('./routes/Products/DeleteProd.vue')
     }
 ]
-//lazy loads for quicker load times for slower internet speeds
+//lazy loads vue for quicker load times for slower internet speeds

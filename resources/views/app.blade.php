@@ -15,7 +15,7 @@
                 <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
                     <div class="container">
                         <a class="navbar-brand" href="{{ url('/') }}">
-                            {{ config('app.name', 'Home') }}
+                            {{ config('app.name', 'XYZ Store') }}
                         </a>
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
@@ -43,6 +43,24 @@
                                         </li>
                                     @endif
                                 @else
+                                    @if (Auth::user()->is_admin) <!-- Access to admin controls -->
+                                        <li class="nav-item">
+                                        <router-link
+                                            class="mr-5 hover:text-gray-900"
+                                            :to="{name: 'products.add'}"
+                                        >
+                                            Add New Product!
+                                        </router-link>
+                                        </li>
+                                        <li class="nav-item">
+                                        <router-link
+                                            class="mr-5 hover:text-gray-900"
+                                            :to="{name: 'products.delete'}"
+                                        >
+                                            Delete Product
+                                        </router-link>
+                                        </li>
+                                    @endif
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}
@@ -74,7 +92,12 @@
                                 <rect x="8" y="14" width="32" height="30" rx="2" fill="#2F88FF" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                                 <path d="M17 18V11C17 7.13401 20.134 4 24 4C27.866 4 31 7.13401 31 11V18" stroke="black" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
                             </svg>
-                                <span class="ml-3 text-xl">XYZ Shopping Cart</span>
+                            <router-link
+                                    class="ml-3 text-xl"
+                                    :to="{name: 'products.index'}"
+                                >
+                                <span>XYZ</span>
+                            </router-link>
                             </a>
                             <nav class="md:mr-auto md:ml-4 md:py-1 md:pl-4 md:border-l md:border-gray-400	flex flex-wrap items-center text-base justify-center">
                                 <router-link
