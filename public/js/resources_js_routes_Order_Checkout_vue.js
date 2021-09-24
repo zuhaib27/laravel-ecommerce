@@ -404,7 +404,8 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                     address: {
                       line1: _this2.customer.address,
                       city: _this2.customer.city,
-                      province: _this2.customer.province,
+                      state: _this2.customer.province,
+                      //unable to setup canadian test purchase
                       postal_code: _this2.customer.postal_code
                     }
                   }
@@ -442,6 +443,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                   })["catch"](function (error) {
                     _this2.paymentProcessing = false;
                     console.error(error);
+                    alert(response.data.message);
                   });
                 }
 

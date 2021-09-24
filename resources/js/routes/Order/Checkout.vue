@@ -196,7 +196,7 @@
                             address: {
                                 line1: this.customer.address,
                                 city: this.customer.city,
-                                province: this.customer.province,
+                                state: this.customer.province, //unable to setup canadian test purchase
                                 postal_code: this.customer.postal_code
                             }
                         }
@@ -225,6 +225,7 @@
                         .catch((error) => {
                             this.paymentProcessing = false;
                             console.error(error);
+                            alert(response.data.message);
                         });
                 }
             }
