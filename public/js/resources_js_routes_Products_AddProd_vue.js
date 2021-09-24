@@ -195,7 +195,7 @@ var staticRenderFns = [
           type: "number",
           min: "0.01",
           step: "0.01",
-          max: "100000",
+          max: "10000000",
           name: "price",
           placeholder: "Enter Product Price"
         }
