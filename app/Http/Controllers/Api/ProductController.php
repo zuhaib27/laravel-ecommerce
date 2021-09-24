@@ -20,6 +20,7 @@ class ProductController extends Controller
     public function addProduct(Request $request)
     {
         $datetime = $this->getTimestamp();
+        $request->price = ($request->price) * 100; //due to /100 in css cause of how i decided to factory build products
         $data =  array_merge($request->all(), ['slug' => Str::slug($request->name), 'created_at' => $datetime, 'updated_at' => $datetime]);
 
         Product::insert($data);
