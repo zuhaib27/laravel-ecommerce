@@ -45,19 +45,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
@@ -71,6 +58,13 @@ __webpack_require__.r(__webpack_exports__);
   computed: {
     products: function products() {
       return this.$store.state.products;
+    },
+    product: function product() {
+      var _this = this;
+
+      return this.products.find(function (product) {
+        return product.slug === _this.$route.params.slug;
+      });
     }
   }
 });
@@ -161,116 +155,89 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("section", { staticClass: "text-gray-700 body-font" }, [
-    _c("div", { staticClass: "container px-5 py-24 mx-auto" }, [
-      !_vm.products.length
-        ? _c("div", { staticClass: "flex flex-wrap -m-4" }, [_vm._m(0)])
-        : _c(
-            "div",
-            { staticClass: "flex flex-wrap -m-4" },
-            _vm._l(_vm.products, function(product) {
-              return _c(
+  return _vm.product
+    ? _c(
+        "section",
+        { staticClass: "text-gray-700 body-font overflow-hidden" },
+        [
+          _c("div", { staticClass: "container px-12 py-24 mx-auto" }, [
+            _c("div", { staticClass: "lg:w-3/5 mx-auto flex flex-wrap" }, [
+              _c("img", {
+                staticClass:
+                  "lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded",
+                attrs: {
+                  alt: "ecommerce",
+                  src: "https://dummyimage.com/640x640"
+                }
+              }),
+              _vm._v(" "),
+              _c(
                 "div",
                 {
-                  key: product.id,
-                  staticClass: "lg:w-1/4 md:w-1/2 p-4 w-full mb-4"
+                  staticClass: "lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0"
                 },
                 [
-                  _c(
-                    "router-link",
-                    {
+                  _vm._l(_vm.product.categories, function(category) {
+                    return _c("h2", {
+                      key: category.id,
                       staticClass:
-                        "block relative h-48 rounded overflow-hidden",
-                      attrs: {
-                        to: {
-                          name: "products.show",
-                          params: { slug: product.slug }
-                        }
-                      }
-                    },
-                    [
-                      _c("img", {
-                        staticClass:
-                          "object-cover object-center w-full h-full block",
-                        attrs: {
-                          alt: "ecommerce",
-                          src: "https://dummyimage.com/420x260"
-                        }
-                      })
-                    ]
-                  ),
+                        "text-sm title-font text-gray-500 tracking-widest uppercase inline-block mr-2",
+                      domProps: { textContent: _vm._s(category.name) }
+                    })
+                  }),
+                  _vm._v(" "),
+                  _c("h1", {
+                    staticClass:
+                      "text-gray-900 text-3xl title-font font-medium mb-2",
+                    domProps: { textContent: _vm._s(_vm.product.name) }
+                  }),
+                  _vm._v(" "),
+                  _c("p", {
+                    staticClass: "leading-relaxed",
+                    domProps: { textContent: _vm._s(_vm.product.description) }
+                  }),
                   _vm._v(" "),
                   _c(
                     "div",
-                    { staticClass: "mt-4" },
+                    {
+                      staticClass: "flex mt-6 pt-4 border-t-2 border-gray-200"
+                    },
                     [
-                      _vm._l(product.categories, function(category) {
-                        return _c("h3", {
-                          key: category.id,
-                          staticClass:
-                            "text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2",
-                          domProps: { textContent: _vm._s(category.name) }
-                        })
-                      }),
-                      _vm._v(" "),
-                      _c("h2", {
+                      _c("span", {
                         staticClass:
-                          "text-gray-900 title-font text-lg font-medium",
-                        domProps: { textContent: _vm._s(product.name) }
+                          "title-font font-medium text-2xl text-gray-900",
+                        domProps: {
+                          textContent: _vm._s(
+                            _vm.formatCurrency(_vm.product.price)
+                          )
+                        }
                       }),
                       _vm._v(" "),
-                      _c("p", {
-                        staticClass: "mt-1",
-                        domProps: {
-                          textContent: _vm._s(_vm.formatCurrency(product.price))
-                        }
-                      })
-                    ],
-                    2
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded",
+                          on: {
+                            click: function($event) {
+                              return _vm.$store.commit("addToCart", _vm.product)
+                            }
+                          }
+                        },
+                        [_vm._v("Add To Cart")]
+                      )
+                    ]
                   )
                 ],
-                1
+                2
               )
-            }),
-            0
-          )
-    ])
-  ])
+            ])
+          ])
+        ]
+      )
+    : _vm._e()
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "lg:w-1/4 md:w-1/2 p-4 w-full mb-4" }, [
-      _c("a", { staticClass: "block relative h-48 rounded overflow-hidden" }, [
-        _c("img", {
-          staticClass: "object-cover object-center w-full h-full block",
-          attrs: { alt: "ecommerce", src: "https://dummyimage.com/420x260" }
-        })
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "mt-4" }, [
-        _c(
-          "h3",
-          {
-            staticClass:
-              "text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2"
-          },
-          [_vm._v("N/A")]
-        ),
-        _vm._v(" "),
-        _c(
-          "h2",
-          { staticClass: "text-gray-900 title-font text-lg font-medium" },
-          [_vm._v("Loading")]
-        ),
-        _vm._v(" "),
-        _c("p", { staticClass: "mt-1" }, [_vm._v("$0.00")])
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

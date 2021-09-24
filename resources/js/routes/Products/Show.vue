@@ -26,6 +26,16 @@
                             class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                             @click="$store.commit('addToCart', product)"
                         >Add To Cart</button>
+                        <!-- ADD CHECK TO SEE IF USER IS ADMIN 
+                         <section class="text-gray-700 body-font overflow-hidden" v-if="admin"> -->
+                            <!--<button
+                            class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
+                            @click="$store.commit('deleteProduct', product)"
+                        >Delete</button> -->
+                            <!-- added deleteCategory method in below button click -->
+                            <!--<a @click="deleteProduct(product.id)" class="btn btn-danger btn-xs">Delete Product</a> -->
+                            <button class="btn btn-danger btn-sm" v-on:click="deleteProduct(product)">Delete<span class="fa fa-trash"></span></button>
+                        <!-- </section> -->
                     </div>
                 </div>
             </div>
@@ -34,10 +44,38 @@
 </template>
 <script>
     export default {
+        
         methods: {
             formatCurrency(amount) {
                 amount = (amount / 100);
                 return amount.toLocaleString('en-CA', { style: 'currency', currency: 'CAD' });
+            },
+            
+            deleteProduct(product) {
+                if (!window.confirm(`Are you sure you want to delete ${product.name}`)) {
+                    return;
+                }
+                var id = product.id;
+                let instance = this;
+                console.log(product.id);
+                
+                //return http().delete(`api/products/delete/${id}`);
+                axios.get('api/products/delete/'+id) //NOT WORKING :(
+                    .then(function (response) {
+                        
+                        alert(response.data.message);
+                        console.log(response.data);
+                        console.log("deleted");
+                        instance.$router.push("/");
+                    }).catch(function (error) {
+                        console.log(error);
+                    });
+                
+                /*this.$http.delete('/products/' +id+'/delete').then(
+                    function(response) {
+                        this.products.$remove(product);
+                    }
+                );*/
             }
         },
         computed: {

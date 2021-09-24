@@ -45,6 +45,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
@@ -53,6 +63,30 @@ __webpack_require__.r(__webpack_exports__);
         style: 'currency',
         currency: 'CAD'
       });
+    },
+    deleteProduct: function deleteProduct(product) {
+      if (!window.confirm("Are you sure you want to delete ".concat(product.name))) {
+        return;
+      }
+
+      var id = product.id;
+      var instance = this;
+      console.log(product.id); //return http().delete(`api/products/delete/${id}`);
+
+      axios.get('api/products/delete/' + id) //NOT WORKING :(
+      .then(function (response) {
+        alert(response.data.message);
+        console.log(response.data);
+        console.log("deleted");
+        instance.$router.push("/");
+      })["catch"](function (error) {
+        console.log(error);
+      });
+      /*this.$http.delete('/products/' +id+'/delete').then(
+          function(response) {
+              this.products.$remove(product);
+          }
+      );*/
     }
   },
   computed: {
@@ -225,6 +259,22 @@ var render = function() {
                           }
                         },
                         [_vm._v("Add To Cart")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger btn-sm",
+                          on: {
+                            click: function($event) {
+                              return _vm.deleteProduct(_vm.product)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v("Delete"),
+                          _c("span", { staticClass: "fa fa-trash" })
+                        ]
                       )
                     ]
                   )

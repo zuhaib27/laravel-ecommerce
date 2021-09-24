@@ -14,8 +14,10 @@ Vue.use(Vuex);
 import VueRouter from 'vue-router';
 import _ from 'lodash';
 import axios from 'axios';
+import VueAxios from 'vue-axios' 
 Vue.use(VueRouter);
 
+Vue.use(VueAxios, axios); 
 
 //window.Vue = require('vue').default;
 
@@ -42,9 +44,13 @@ const store = new Vuex.Store({
     state: {
         products: [],
         cart: [],
-        order: {}
+        order: {},
+        admin: null
     },
     mutations: {
+        setAdminUser(state, admin) {
+            state.admin = admin;
+        },
         updateProducts(state, products) {
             state.products = products;
         },
@@ -80,6 +86,14 @@ const store = new Vuex.Store({
         },
         clearCart({ commit }) {
             commit('updateCart', []);
+        },
+        //deleteProduct(id) {
+        //    return http().delete(`products/${id}/delete`);
+        //}
+    },
+    getters: {
+        isAdmin(state) {
+            return state.user !== null;
         }
     }
 

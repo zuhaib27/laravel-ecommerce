@@ -1,44 +1,31 @@
 <template>
-    <section class="text-gray-700 body-font">
-        <div class="container px-5 py-24 mx-auto">
-            <div class="flex flex-wrap -m-4" v-if="!products.length">
-                <div class="lg:w-1/4 md:w-1/2 p-4 w-full mb-4">
-                    <a class="block relative h-48 rounded overflow-hidden">
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
-                    </a>
-                    <div class="mt-4">
-                        <h3 class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2">N/A</h3>
-                        <h2 class="text-gray-900 title-font text-lg font-medium">Loading</h2>
-                        <p class="mt-1">$0.00</p>
-                    </div>
-                </div>
-            </div>
-            <div class="flex flex-wrap -m-4" v-else>
-                <div
-                    class="lg:w-1/4 md:w-1/2 p-4 w-full mb-4"
-                    v-for="product in products"
-                    :key="product.id"
-                >
-                    <router-link
-                        class="block relative h-48 rounded overflow-hidden"
-                        :to="{name: 'products.show', params: {slug: product.slug}}"
-                    >
-                        <img alt="ecommerce" class="object-cover object-center w-full h-full block" src="https://dummyimage.com/420x260">
-                    </router-link>
-                    <div class="mt-4">
-                        <h3
-                            class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2"
-                            v-for="category in product.categories" :key="category.id"
-                            v-text="category.name"
-                        ></h3>
-                        <h2
-                            class="text-gray-900 title-font text-lg font-medium"
-                            v-text="product.name"
-                        ></h2>
-                        <p
-                            class="mt-1"
+    <section class="text-gray-700 body-font overflow-hidden" v-if="product">
+        <div class="container px-12 py-24 mx-auto">
+            <div class="lg:w-3/5 mx-auto flex flex-wrap">
+                <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-auto h-64 object-cover object-center rounded" src="https://dummyimage.com/640x640">
+                <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
+                    <h2
+                        class="text-sm title-font text-gray-500 tracking-widest uppercase inline-block mr-2"
+                        v-for="category in product.categories"  :key="category.id"
+                        v-text="category.name"
+                    ></h2>
+                    <h1
+                        class="text-gray-900 text-3xl title-font font-medium mb-2"
+                        v-text="product.name"
+                    ></h1>
+                    <p
+                        class="leading-relaxed"
+                        v-text="product.description"
+                    ></p>
+                    <div class="flex mt-6 pt-4 border-t-2 border-gray-200">
+                        <span
+                            class="title-font font-medium text-2xl text-gray-900"
                             v-text="formatCurrency(product.price)"
-                        ></p>
+                        ></span>
+                        <button
+                            class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
+                            @click="$store.commit('addToCart', product)"
+                        >Add To Cart</button>
                     </div>
                 </div>
             </div>
@@ -56,6 +43,9 @@
         computed: {
             products() {
                 return this.$store.state.products;
+            },
+            product() {
+                return this.products.find(product => product.slug === this.$route.params.slug);
             }
         }
     }

@@ -23,11 +23,17 @@ module.exports = [
         path: '/add-product',
         name: 'products.add',
         component: () => import('./routes/Products/AddProd.vue')
-    },
+    }/*,
     {
         path: '/delete-product',
         name: 'products.delete',
         component: () => import('./routes/Products/DeleteProd.vue')
-    }
+    },
+    {
+        path: '/product/:slug/modify',
+        name: 'products.update',
+        component: () => import('./routes/Products/ModifyProd.vue')
+    }**/
+
 ]
 //lazy loads vue for quicker load times for slower internet speeds
