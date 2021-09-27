@@ -35,6 +35,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "AddProduct",
   data: function data() {
@@ -43,14 +44,35 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    AddNewProduct: function AddNewProduct() {
+    ModifyProduct: function ModifyProduct() {
       var formData = new FormData(document.getElementById("myForm"));
       var instance = this;
-      axios.post('api/products/add', formData).then(function (response) {
+      axios.post('api/product/modify', formData).then(function (response) {
         console.log(formData);
         instance.$router.push("/");
       })["catch"](function (error) {
         console.log(error);
+      });
+    },
+    updateProduct: function updateProduct() {
+      var _this = this;
+
+      this.axios.patch("http://localhost:8000/api/products/".concat(this.$route.params.id), this.product).then(function (res) {
+        _this.$router.push({
+          name: 'home'
+        });
+      });
+    }
+  },
+  computed: {
+    products: function products() {
+      return this.$store.state.products;
+    },
+    product: function product() {
+      var _this2 = this;
+
+      return this.products.find(function (product) {
+        return product.slug === _this2.$route.params.slug;
       });
     }
   }
@@ -150,36 +172,49 @@ var render = function() {
         on: {
           submit: function($event) {
             $event.preventDefault()
-            return _vm.AddNewProduct.apply(null, arguments)
+            return _vm.ModifyProduct.apply(null, arguments)
           }
         }
       },
       [
+        _c("div", { staticClass: "form-group" }, [
+          _c("label", { attrs: { for: "product_name" } }, [
+            _vm._v("Product Name")
+          ]),
+          _vm._v(" "),
+          _c("input", {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.product.name,
+                expression: "product.name"
+              }
+            ],
+            staticClass: "form-control",
+            attrs: { id: "currentProdName", type: "text" },
+            domProps: { value: _vm.product.name },
+            on: {
+              input: function($event) {
+                if ($event.target.composing) {
+                  return
+                }
+                _vm.$set(_vm.product, "name", $event.target.value)
+              }
+            }
+          })
+        ]),
+        _vm._v(" "),
         _vm._m(0),
         _vm._v(" "),
         _vm._m(1),
         _vm._v(" "),
-        _vm._m(2),
-        _vm._v(" "),
-        _vm._m(3)
+        _vm._m(2)
       ]
     )
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "form-group" }, [
-      _c("label", { attrs: { for: "product_name" } }, [_vm._v("Product Name")]),
-      _vm._v(" "),
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", name: "name", placeholder: "Enter Product Name" }
-      })
-    ])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement
@@ -234,7 +269,7 @@ var staticRenderFns = [
           staticClass: "btn btn-primary btn-sm btn-flat",
           attrs: { type: "submit" }
         },
-        [_vm._v("Add Product")]
+        [_vm._v("Submit Changes")]
       )
     ])
   }

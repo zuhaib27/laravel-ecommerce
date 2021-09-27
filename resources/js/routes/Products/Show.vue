@@ -34,6 +34,10 @@
                         >Delete</button> -->
                             <!-- added deleteCategory method in below button click -->
                             <!--<a @click="deleteProduct(product.id)" class="btn btn-danger btn-xs">Delete Product</a> -->
+                            
+                            <button class="flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded" 
+                                v-on:click="redirectModifyProd(product.slug)">Modify<span class="fa fa-trash"></span></button>
+                        
                             <button class="btn btn-danger btn-sm" v-on:click="deleteProduct(product)">Delete<span class="fa fa-trash"></span></button>
                         <!-- </section> -->
                     </div>
@@ -76,6 +80,9 @@
                         this.products.$remove(product);
                     }
                 );*/
+            },
+            redirectModifyProd(slug){
+                 this.$router.push({path: "/product/"+slug+"/modify"});
             }
         },
         computed: {

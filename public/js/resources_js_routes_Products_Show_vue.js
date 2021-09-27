@@ -55,6 +55,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   methods: {
     formatCurrency: function formatCurrency(amount) {
@@ -87,6 +91,11 @@ __webpack_require__.r(__webpack_exports__);
               this.products.$remove(product);
           }
       );*/
+    },
+    redirectModifyProd: function redirectModifyProd(slug) {
+      this.$router.push({
+        path: "/product/" + slug + "/modify"
+      });
     }
   },
   computed: {
@@ -259,6 +268,23 @@ var render = function() {
                           }
                         },
                         [_vm._v("Add To Cart")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass:
+                            "flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded",
+                          on: {
+                            click: function($event) {
+                              return _vm.redirectModifyProd(_vm.product.slug)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v("Modify"),
+                          _c("span", { staticClass: "fa fa-trash" })
+                        ]
                       ),
                       _vm._v(" "),
                       _c(

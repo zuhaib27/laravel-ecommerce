@@ -1,9 +1,10 @@
 <template>
     <div>
-        <form name="myform" @submit.prevent="AddNewProduct" id="myForm">
+        <form name="myform" @submit.prevent="ModifyProduct" id="myForm">
             <div class="form-group">
                 <label for="product_name">Product Name</label>
-                <input type="text" class="form-control" name="name" placeholder="Enter Product Name">
+                <input id="currentProdName" type="text" class="form-control" v-model="product.name">
+                
             </div>
             <div class="form-group">
                 <label for="product_cost">Product Price $</label>
@@ -16,7 +17,7 @@
             </div>
 
             <div class="form-group">
-                <button class="btn btn-primary btn-sm btn-flat" type="submit">Add Product</button>
+                <button class="btn btn-primary btn-sm btn-flat" type="submit">Submit Changes</button>
             </div>
         </form>
     </div>
@@ -33,10 +34,10 @@
         },
 
         methods : {
-            AddNewProduct() {
+            ModifyProduct() {
                 var formData = new FormData(document.getElementById("myForm"));
                 let instance = this;
-                axios.post('api/products/add', formData)
+                axios.post('api/product/modify', formData)
                     .then(function (response) {
                         console.log(formData);
                         instance.$router.push("/");
@@ -44,6 +45,21 @@
                     .catch(function (error) {
                         console.log(error);
                     });
+            },
+            updateProduct() {
+                this.axios
+                    .patch(`http://localhost:8000/api/products/${this.$route.params.id}`, this.product)
+                    .then((res) => {
+                        this.$router.push({ name: 'home' });
+                    });
+            }
+        },
+        computed: {
+            products() {
+                return this.$store.state.products;
+            },
+            product() {
+                return this.products.find(product => product.slug === this.$route.params.slug);
             }
         }
     }
