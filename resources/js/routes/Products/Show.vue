@@ -64,7 +64,9 @@
                 console.log(product.id);
                 
                 //return http().delete(`api/products/delete/${id}`);
-                axios.get('api/products/delete/'+id) //NOT WORKING :(
+                
+                //axios.delete('api/products/delete', {params: {'id': id}}) //NOT WORKING :(
+                axios.delete('http://localhost:8000/api/products/delete/'+id)
                     .then(function (response) {
                         
                         alert(response.data.message);
@@ -73,13 +75,19 @@
                         instance.$router.push("/");
                     }).catch(function (error) {
                         console.log(error);
-                    });
-                
-                /*this.$http.delete('/products/' +id+'/delete').then(
+                    });//*/
+
+                /*this.$http.delete('/products/delete/'+id).then(
                     function(response) {
-                        this.products.$remove(product);
-                    }
-                );*/
+                        //this.$products.$remove(product);
+                        alert(response.data.message);
+                        console.log(response.data);
+                        console.log("deleted");
+                        instance.$router.push("/");
+                    }).catch(function (error) {
+                        console.log(error);
+                    });//*/
+                
             },
             redirectModifyProd(slug){
                  this.$router.push({path: "/product/"+slug+"/modify"});

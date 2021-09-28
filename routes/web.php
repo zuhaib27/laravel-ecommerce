@@ -30,7 +30,8 @@ Route::any('/{any}', function() {
 })->where('any', '.*'); //this allows for history to return back to original app view
 
 
-//paypal
+/*//paypal
 Route::get('payment', 'PayPalController@payment')->name('payment');
 Route::get('cancel', 'PayPalController@cancel')->name('payment.cancel');
 Route::get('payment/success', 'PayPalController@success')->name('payment.success');
+*/

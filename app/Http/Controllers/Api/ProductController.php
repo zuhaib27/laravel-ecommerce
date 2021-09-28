@@ -27,13 +27,13 @@ class ProductController extends Controller
         return response()->json(['name' => $request->name]);
 
     }
-    public function deleteProducts(Product $id)
+    public function destoryProducts(Product $id)
     {
         $this->console_log($id, true);
 
         $data = Product::find($id);
         
-        if ($data->delete()) {
+        if ($data->each->delete()) {
             return response()->json([
                 'message' => 'product deleted successfully!',
                 'status_code' => 200

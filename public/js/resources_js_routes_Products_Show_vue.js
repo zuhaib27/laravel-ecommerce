@@ -76,21 +76,27 @@ __webpack_require__.r(__webpack_exports__);
       var id = product.id;
       var instance = this;
       console.log(product.id); //return http().delete(`api/products/delete/${id}`);
+      //axios.delete('api/products/delete', {params: {'id': id}}) //NOT WORKING :(
 
-      axios.get('api/products/delete/' + id) //NOT WORKING :(
-      .then(function (response) {
+      axios["delete"]('http://localhost:8000/api/products/delete/' + id).then(function (response) {
         alert(response.data.message);
         console.log(response.data);
         console.log("deleted");
         instance.$router.push("/");
       })["catch"](function (error) {
         console.log(error);
-      });
-      /*this.$http.delete('/products/' +id+'/delete').then(
+      }); //*/
+
+      /*this.$http.delete('/products/delete/'+id).then(
           function(response) {
-              this.products.$remove(product);
-          }
-      );*/
+              //this.$products.$remove(product);
+              alert(response.data.message);
+              console.log(response.data);
+              console.log("deleted");
+              instance.$router.push("/");
+          }).catch(function (error) {
+              console.log(error);
+          });//*/
     },
     redirectModifyProd: function redirectModifyProd(slug) {
       this.$router.push({
