@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Api;
 
+use App\Http\Controllers\Controller;
 use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -15,19 +16,18 @@ class VendorController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //
-    }
 
     public function storeContactForm(Request $request)
     {
         $datetime = $this->getTimestamp();
-        $request->price = ($request->price) * 100; //due to /100 in css cause of how i decided to factory build products
+      
         $data =  array_merge($request->all(), ['slug' => Str::slug($request->name), 'created_at' => $datetime, 'updated_at' => $datetime]);
 
-        Vendor::insert($data);
+        try {
+            Vendor::insert($data);
+        }catch(err){
 
+        }
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',
@@ -58,5 +58,9 @@ class VendorController extends Controller
         });
 
         return redirect()->back()->with(['success' => 'Contact Form Submit Successfully']);
+    }
+    private function getTimestamp()
+    {
+        return date_create()->format('Y-m-d H:i:s');
     }
 }
