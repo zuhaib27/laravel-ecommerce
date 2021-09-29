@@ -81,7 +81,8 @@
             IsAdmin()
             {
                 console.log(this.isadmin);
-                return this.isadmin ===1;
+                this.isadmin = this.$user_isadmin;
+                return this.isadmin;
             }
         },
         computed: {

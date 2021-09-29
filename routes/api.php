@@ -18,6 +18,8 @@ use App\Http\Controllers\Api\VendorController;
 
 Route::get('/products', [ProductController::class, 'index']);
 
+Route::post('/products/add', [ProductController::class, 'addProduct']);
+
 Route::post('/purchase', [UserController::class, 'purchase']);
 
 Route::post('/vendor/register', [VendorController::class, 'storeContactForm']);

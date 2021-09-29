@@ -48,6 +48,7 @@ __webpack_require__.r(__webpack_exports__);
       var instance = this;
       axios.post('api/products/add', formData).then(function (response) {
         console.log(formData);
+        instance.$store.dispatch('getProducts');
         instance.$router.push("/");
       })["catch"](function (error) {
         console.log(error);

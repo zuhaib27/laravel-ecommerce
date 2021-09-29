@@ -23,11 +23,9 @@ class VendorController extends Controller
       
         $data =  array_merge($request->all(), ['slug' => Str::slug($request->name), 'created_at' => $datetime, 'updated_at' => $datetime]);
 
-        try {
-            Vendor::insert($data);
-        }catch(err){
-
-        }
+        
+        Vendor::insert($data);
+        
         $request->validate([
             'name' => 'required',
             'email' => 'required|email',

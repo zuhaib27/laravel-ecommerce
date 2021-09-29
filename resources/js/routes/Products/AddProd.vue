@@ -39,6 +39,7 @@
                 axios.post('api/products/add', formData)
                     .then(function (response) {
                         console.log(formData);
+                        instance.$store.dispatch('getProducts');
                         instance.$router.push("/");
                     })
                     .catch(function (error) {
