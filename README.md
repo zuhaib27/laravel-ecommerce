@@ -27,11 +27,12 @@ Method of Delivery:
 Create a public repository for this exercise and share the link with us when it's ready. You have 1 week to complete this exercise. Unit tests are required.
 
 ## Project Setup
-- cd /laravel-ecommerce
-- composer install
-- php artisan migrate:refresh --seed
-- php artisan serve
 - NOTE: will need to adjust .env to support local database and ports!
+- cd /laravel-ecommerce
+- chmod +x setup.sh
+- ./setup.sh
+- Should be up on localhost, based on .env
+
 
 ## About Laravel
 
