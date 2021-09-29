@@ -7,7 +7,7 @@
             </div>
             <div class="form-group">
                 <label for="product_cost">Product Price $</label>
-                <input type="number" min="0.01" step="0.01" max = "10000000" class="form-control" name="price" placeholder="Enter Product Price">
+                <input type="number" min="0.01" step="0.01" max = "100000000" class="form-control" name="price" placeholder="Enter Product Price">
             </div>
 
             <div class="form-group">

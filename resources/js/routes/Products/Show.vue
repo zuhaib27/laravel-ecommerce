@@ -61,17 +61,15 @@
                 }
                 var id = product.id;
                 let instance = this;
-                console.log(product.id);
+                
                 
                 //return http().delete(`api/products/delete/${id}`);
                 
                 //axios.delete('api/products/delete', {params: {'id': id}}) //NOT WORKING :(
                 axios.delete('http://localhost:8000/api/products/delete/'+id)
                     .then(function (response) {
-                        
                         alert(response.data.message);
-                        console.log(response.data);
-                        console.log("deleted");
+                        instance.$store.dispatch('getProducts'); //inefficient way to repopulate view database to changes, should look into pusher / ajax
                         instance.$router.push("/");
                     }).catch(function (error) {
                         console.log(error);

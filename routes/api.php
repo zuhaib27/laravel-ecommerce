@@ -22,3 +22,5 @@ Route::post('/purchase', [UserController::class, 'purchase']);
 Route::post('/products/add', [ProductController::class, 'addProduct']);
 
 Route::delete("/products/delete/{id}",[ProductController::class, 'destoryProducts']);
+
+Route::post("/products/update/{id}",[ProductController::class, 'modifyProducts']);

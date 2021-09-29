@@ -29,10 +29,9 @@ class ProductController extends Controller
     }
     public function destoryProducts(Product $id)
     {
-        $this->console_log($id, true);
-
+        //$this->console_log($id, true);
         $data = Product::find($id);
-        
+    
         if ($data->each->delete()) {
             return response()->json([
                 'message' => 'product deleted successfully!',
@@ -45,21 +44,36 @@ class ProductController extends Controller
             ], 500);
         }
     }
-    public function modifyProduct(Request $request)
+    public function modifyProducts(Product $id, Request $request)
     {
-        
-        return response()->json(['name' => $request->name]);
+        $data = Product::find($id);
+        //$data->update($request->all());
+        //dd($data);
+        if ($data->each->update($request->all())) 
+        {
+            return response()->json([
+                'message' => 'product modified successfully!',
+                'status_code' => 200
+            ], 200); 
+        } else 
+        {
+            return response()->json([
+                'message' => 'Some error occurred, please try again',
+                'status_code' => 500
+            ], 500);
+        }
     }
     private function getTimestamp()
     {
         return date_create()->format('Y-m-d H:i:s');
     }
 
+    /* //testing function
     private function console_log($data, $add_script_tags = false) {
         $command = 'console.log('. json_encode($data, JSON_HEX_TAG).');';
         if ($add_script_tags) {
             $command = '<script>'. $command . '</script>';
         }
         echo $command;
-    }   
+    } */  
 }
