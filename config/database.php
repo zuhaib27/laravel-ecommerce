@@ -51,15 +51,15 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             //'url' => env('DATABASE_URL'),
-            'url' => array_key_exists('DATABASE_URL', $_SERVER) ? $_SERVER('DATABASE_URL') : env('DATABASE_URL'),
+            /*'url' => array_key_exists('DATABASE_URL', $_SERVER) ? $_SERVER('DATABASE_URL') : env('DATABASE_URL'),
             'host' => array_key_exists('DB_HOST', $_SERVER) ? $_SERVER('DB_HOST') : env('DB_HOST'),
             'port' => array_key_exists('DB_PORT', $_SERVER) ? $_SERVER('DB_PORT') : env('DB_PORT'),
             'database' => array_key_exists('DB_DATABASE', $_SERVER) ? $_SERVER('DB_DATABASE') : env('DB_DATABASE'),
             'username' => array_key_exists('DB_USERNAME', $_SERVER) ? $_SERVER('DB_USERNAME') : env('DB_USERNAME'),
             'password' => array_key_exists('DB_PASSWORD', $_SERVER) ? $_SERVER('DB_PASSWORD') : env('DB_PASSWORD'),
- 
+            */
              // FOR DEV ENVIRONMENT
-            /*'host' => env('DB_HOSTNAME', '127.0.0.1'),
+            'host' => env('DB_HOSTNAME', '127.0.0.1'),
             'port' => env('DB_PORT', '3306'),
             'database' => env('DB_DATABASE', 'forge'),
             'username' => env('DB_USERNAME', 'forge'),
