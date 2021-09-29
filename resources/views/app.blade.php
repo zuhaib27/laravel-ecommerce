@@ -20,7 +20,7 @@
                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-
+                        
                         <div class="collapse navbar-collapse" id="navbarSupportedContent">
                             <!-- Left Side Of Navbar -->
                             <ul class="navbar-nav mr-auto">
@@ -30,6 +30,12 @@
                             <!-- Right Side Of Navbar -->
                             <ul class="navbar-nav ml-auto">
                                 <!-- Authentication Links -->
+                                @if (Auth::user())
+                                <meta name="user-admin" content="{{ Auth::user()->is_admin }}">
+                                <meta name="user-vendor" content="{{ Auth::user()->is_vendor }}">
+                                @endif
+                                
+                                
                                 @guest
                                     @if (Route::has('login'))
                                         <li class="nav-item">
@@ -43,7 +49,9 @@
                                         </li>
                                     @endif
                                 @else
-                                    @if (Auth::user()->is_admin) <!-- Access to admin controls -->
+                                
+                                    @if (Auth::user()->is_admin or Auth::user()->is_vendor) <!-- Access to admin controls -->
+                                    
                                         <li class="nav-item">
                                         <router-link
                                             class="mr-5 hover:text-gray-900"
@@ -52,9 +60,20 @@
                                             Add New Product!
                                         </router-link>
                                         </li>
-                                        <li class="nav-item">
-                                        
                                     @endif
+                                    @if (!Auth::user()->is_vendor)
+                                        <li class="nav-item">
+                                        <router-link
+                                            class="mr-5 hover:text-gray-900"
+                                            :to="{name: 'vendor.register'}"
+                                        >
+                                            Register as Vendor!
+                                        </router-link>
+                                        </li>
+                                       
+                                    @endif
+
+                                    
                                     <li class="nav-item dropdown">
                                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                             {{ Auth::user()->name }}

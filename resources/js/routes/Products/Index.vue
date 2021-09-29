@@ -28,8 +28,8 @@
                     <div class="mt-4">
                         <h3
                             class="text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2"
-                            v-for="category in product.categories" :key="category.id"
-                            v-text="category.name"
+                            v-for="vendor in product.categories" :key="vendor.id"
+                            v-text="vendor.name"
                         ></h3>
                         <h2
                             class="text-gray-900 title-font text-lg font-medium"

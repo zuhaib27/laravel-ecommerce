@@ -204,12 +204,12 @@ var render = function() {
                     "div",
                     { staticClass: "mt-4" },
                     [
-                      _vm._l(product.categories, function(category) {
+                      _vm._l(product.categories, function(vendor) {
                         return _c("h3", {
-                          key: category.id,
+                          key: vendor.id,
                           staticClass:
                             "text-gray-500 text-xs tracking-widest title-font mb-1 uppercase inline-block mr-2",
-                          domProps: { textContent: _vm._s(category.name) }
+                          domProps: { textContent: _vm._s(vendor.name) }
                         })
                       }),
                       _vm._v(" "),

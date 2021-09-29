@@ -26,8 +26,8 @@
                             class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
                             @click="$store.commit('addToCart', product)"
                         >Add To Cart</button>
-                        <!-- ADD CHECK TO SEE IF USER IS ADMIN 
-                         <section class="text-gray-700 body-font overflow-hidden" v-if="admin"> -->
+                        <!-- ADD CHECK TO SEE IF USER IS ADMIN -->
+                         <section class="text-gray-700 body-font overflow-hidden" v-if="IsAdmin()"> 
                             <!--<button
                             class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
                             @click="$store.commit('deleteProduct', product)"
@@ -39,7 +39,7 @@
                                 v-on:click="redirectModifyProd(product.slug)">Modify<span class="fa fa-trash"></span></button>
                         
                             <button class="btn btn-danger btn-sm" v-on:click="deleteProduct(product)">Delete<span class="fa fa-trash"></span></button>
-                        <!-- </section> -->
+                         </section> 
                     </div>
                 </div>
             </div>
@@ -48,7 +48,15 @@
 </template>
 <script>
     export default {
-        
+        data(){
+            return {
+                isadmin: 0
+            }
+        },
+        mounted() {
+            this.isadmin = this.$user_isadmin;
+            console.log(this.$user_isadmin);
+        },
         methods: {
             formatCurrency(amount) {
                 amount = (amount / 100);
@@ -89,6 +97,11 @@
             },
             redirectModifyProd(slug){
                  this.$router.push({path: "/product/"+slug+"/modify"});
+            },
+            IsAdmin()
+            {
+                console.log(this.isadmin);
+                return this.isadmin;
             }
         },
         computed: {

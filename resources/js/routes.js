@@ -33,6 +33,11 @@ module.exports = [
         path: '/product/:slug/modify',
         name: 'products.modify',
         component: () => import('./routes/Products/ModifyProd.vue')
+    },
+    {
+        path: '/vendor/register',
+        name: 'vendor.register',
+        component: () => import('./routes/Vendor/VendorRegister.vue')
     }
 
 ]

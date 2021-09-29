@@ -60,6 +60,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
+  data: function data() {
+    return {
+      isadmin: 0
+    };
+  },
+  mounted: function mounted() {
+    this.isadmin = this.$user_isadmin;
+    console.log(this.$user_isadmin);
+  },
   methods: {
     formatCurrency: function formatCurrency(amount) {
       amount = amount / 100;
@@ -101,6 +110,10 @@ __webpack_require__.r(__webpack_exports__);
       this.$router.push({
         path: "/product/" + slug + "/modify"
       });
+    },
+    IsAdmin: function IsAdmin() {
+      console.log(this.isadmin);
+      return this.isadmin;
     }
   },
   computed: {
@@ -275,38 +288,51 @@ var render = function() {
                         [_vm._v("Add To Cart")]
                       ),
                       _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass:
-                            "flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded",
-                          on: {
-                            click: function($event) {
-                              return _vm.redirectModifyProd(_vm.product.slug)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v("Modify"),
-                          _c("span", { staticClass: "fa fa-trash" })
-                        ]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger btn-sm",
-                          on: {
-                            click: function($event) {
-                              return _vm.deleteProduct(_vm.product)
-                            }
-                          }
-                        },
-                        [
-                          _vm._v("Delete"),
-                          _c("span", { staticClass: "fa fa-trash" })
-                        ]
-                      )
+                      _vm.IsAdmin()
+                        ? _c(
+                            "section",
+                            {
+                              staticClass:
+                                "text-gray-700 body-font overflow-hidden"
+                            },
+                            [
+                              _c(
+                                "button",
+                                {
+                                  staticClass:
+                                    "flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.redirectModifyProd(
+                                        _vm.product.slug
+                                      )
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v("Modify"),
+                                  _c("span", { staticClass: "fa fa-trash" })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger btn-sm",
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.deleteProduct(_vm.product)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v("Delete"),
+                                  _c("span", { staticClass: "fa fa-trash" })
+                                ]
+                              )
+                            ]
+                          )
+                        : _vm._e()
                     ]
                   )
                 ],

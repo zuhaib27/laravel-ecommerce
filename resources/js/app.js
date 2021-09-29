@@ -34,6 +34,14 @@ Vue.use(VueAxios, axios);
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 
+try {
+    Vue.prototype.$user_isadmin = document.querySelector("meta[name='user-admin']").getAttribute('content');
+    Vue.prototype.$user_isvendor = document.querySelector("meta[name='user-vendor']").getAttribute('content');
+
+}catch(err) { //means values are undefined. BAD PRACTICE!
+    Vue.prototype.$user_isadmin = 0;
+    Vue.prototype.$user_isvendor = 0;
+}
 
 const router = new VueRouter({
     mode: 'history',
