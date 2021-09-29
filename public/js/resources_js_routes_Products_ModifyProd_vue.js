@@ -40,10 +40,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "update-product",
   data: function data() {
@@ -59,18 +55,6 @@ __webpack_require__.r(__webpack_exports__);
     this.showProduct();
   },
   methods: {
-    /*ModifyProduct() {
-        var formData = new FormData(document.getElementById("myForm"));
-        let instance = this;
-        axios.post('api/product/modify', formData)
-            .then(function (response) {
-                console.log(formData);
-                instance.$router.push("/");
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
-    },*/
     updateProduct: function updateProduct() {
       var _this = this;
 
@@ -85,15 +69,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       });
-      /*this.axios
-          .patch(`http://localhost:8000/api/products/update/${this.$route.params.id}`, this.product)
-          .then((res) => {
-              console.log("updating value")
-              instance.$router.push({ name: 'products.index' });
-          })
-          .catch(function (error) {
-              console.log(error);
-       });*/
     },
     showProduct: function showProduct() {
       this.form.name = this.product.name;

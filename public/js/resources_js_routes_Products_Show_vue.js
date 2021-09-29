@@ -53,12 +53,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -83,9 +77,7 @@ __webpack_require__.r(__webpack_exports__);
       }
 
       var id = product.id;
-      var instance = this; //return http().delete(`api/products/delete/${id}`);
-      //axios.delete('api/products/delete', {params: {'id': id}}) //NOT WORKING :(
-
+      var instance = this;
       axios["delete"]('http://localhost:8000/api/products/delete/' + id).then(function (response) {
         alert(response.data.message);
         instance.$store.dispatch('getProducts'); //inefficient way to repopulate view database to changes, should look into pusher / ajax
@@ -94,17 +86,6 @@ __webpack_require__.r(__webpack_exports__);
       })["catch"](function (error) {
         console.log(error);
       }); //*/
-
-      /*this.$http.delete('/products/delete/'+id).then(
-          function(response) {
-              //this.$products.$remove(product);
-              alert(response.data.message);
-              console.log(response.data);
-              console.log("deleted");
-              instance.$router.push("/");
-          }).catch(function (error) {
-              console.log(error);
-          });//*/
     },
     redirectModifyProd: function redirectModifyProd(slug) {
       this.$router.push({
@@ -113,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
     },
     IsAdmin: function IsAdmin() {
       console.log(this.isadmin);
-      return this.isadmin;
+      return this.isadmin === 1;
     }
   },
   computed: {

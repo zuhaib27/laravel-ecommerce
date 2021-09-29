@@ -53,6 +53,9 @@
             <div class="form-group">
                 <button class="btn btn-primary btn-sm btn-flat" type="submit">Register</button>
             </div>
+            <div>
+             <input type="button" value="Go Back" onclick="history.back(-1)" />
+            </div>
         </form>
     </div>
 </template>

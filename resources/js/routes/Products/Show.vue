@@ -28,12 +28,6 @@
                         >Add To Cart</button>
                         <!-- ADD CHECK TO SEE IF USER IS ADMIN -->
                          <section class="text-gray-700 body-font overflow-hidden" v-if="IsAdmin()"> 
-                            <!--<button
-                            class="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover:bg-red-600 rounded"
-                            @click="$store.commit('deleteProduct', product)"
-                        >Delete</button> -->
-                            <!-- added deleteCategory method in below button click -->
-                            <!--<a @click="deleteProduct(product.id)" class="btn btn-danger btn-xs">Delete Product</a> -->
                             
                             <button class="flex ml-auto text-white bg-gray-500 border-0 py-2 px-6 focus:outline-none hover:bg-gray-600 rounded" 
                                 v-on:click="redirectModifyProd(product.slug)">Modify<span class="fa fa-trash"></span></button>
@@ -69,11 +63,7 @@
                 }
                 var id = product.id;
                 let instance = this;
-                
-                
-                //return http().delete(`api/products/delete/${id}`);
-                
-                //axios.delete('api/products/delete', {params: {'id': id}}) //NOT WORKING :(
+        
                 axios.delete('http://localhost:8000/api/products/delete/'+id)
                     .then(function (response) {
                         alert(response.data.message);
@@ -83,16 +73,6 @@
                         console.log(error);
                     });//*/
 
-                /*this.$http.delete('/products/delete/'+id).then(
-                    function(response) {
-                        //this.$products.$remove(product);
-                        alert(response.data.message);
-                        console.log(response.data);
-                        console.log("deleted");
-                        instance.$router.push("/");
-                    }).catch(function (error) {
-                        console.log(error);
-                    });//*/
                 
             },
             redirectModifyProd(slug){
@@ -101,7 +81,7 @@
             IsAdmin()
             {
                 console.log(this.isadmin);
-                return this.isadmin;
+                return this.isadmin ===1;
             }
         },
         computed: {

@@ -70,6 +70,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   name: "RegisterVendor",
   data: function data() {
@@ -204,7 +207,9 @@ var render = function() {
         _vm._v(" "),
         _vm._m(6),
         _vm._v(" "),
-        _vm._m(7)
+        _vm._m(7),
+        _vm._v(" "),
+        _vm._m(8)
       ]
     )
   ])
@@ -363,6 +368,16 @@ var staticRenderFns = [
         },
         [_vm._v("Register")]
       )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("input", {
+        attrs: { type: "button", value: "Go Back", onclick: "history.back(-1)" }
+      })
     ])
   }
 ]

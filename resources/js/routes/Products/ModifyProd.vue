@@ -20,11 +20,7 @@
                 <button class="btn btn-primary btn-sm btn-flat" type="submit">Submit Changes</button>
             </div>
             <div>
-                <!-- <button
-                            class="flex ml-auto text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"
-                            @click="goBack()"
-                        >Add To Cart</button> 
-                -->
+                
                 <input type="button" value="Go Back" onclick="history.back(-1)" />
             </div>
         </form>
@@ -47,18 +43,7 @@
             this.showProduct()
         },
         methods : {
-            /*ModifyProduct() {
-                var formData = new FormData(document.getElementById("myForm"));
-                let instance = this;
-                axios.post('api/product/modify', formData)
-                    .then(function (response) {
-                        console.log(formData);
-                        instance.$router.push("/");
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-                    });
-            },*/
+            
             updateProduct() 
             {
                 var formData = new FormData(document.getElementById("myForm"));
@@ -78,16 +63,7 @@
                     {
                         console.log(error);
                     });
-                /*this.axios
-                    .patch(`http://localhost:8000/api/products/update/${this.$route.params.id}`, this.product)
-                    .then((res) => {
-                        console.log("updating value")
-                        instance.$router.push({ name: 'products.index' });
-                    })
-                    .catch(function (error) {
-                        console.log(error);
-
-                });*/
+               
             },
             showProduct()
             {
